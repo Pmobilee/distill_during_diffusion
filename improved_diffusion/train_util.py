@@ -328,6 +328,23 @@ def parse_resume_step_from_filename(filename):
 
 
 def get_blob_logdir():
+    cwd = os.getcwd()
+    
+    # Construct the path to the 'checkpoints' folder
+    checkpoints_dir = os.path.join(cwd, "checkpoints")
+    
+    # Check if the 'checkpoints' directory exists, create it if it doesn't
+    if not os.path.exists(checkpoints_dir):
+        os.makedirs(checkpoints_dir)
+        
+    return checkpoints_dir
+    
+    # Get the environment variable or default to the logger directory inside 'checkpoints'
+    logdir = os.environ.get("DIFFUSION_BLOB_LOGDIR", os.path.join(checkpoints_dir, logger.get_dir()))
+
+    # return logdirdef get_blob_logdir():
+    # cwd = os.getcwd()
+    
     return os.environ.get("DIFFUSION_BLOB_LOGDIR", logger.get_dir())
 
 
