@@ -1,0 +1,48 @@
+/var/spool/slurm/slurmd/job5463666/slurm_script: line 19: cd: /thesis/distill_diffusion: No such file or directory
+Logging to /scratch-local/dmul.5463666/openai-2024-03-06-15-35-02-458826
+creating model and diffusion...
+creating data loader...
+training...
+CUDA: True
+------------------------
+| grad_norm | 3.21     |
+| loss      | 1        |
+| loss_q0   | 0.996    |
+| loss_q1   | 0.998    |
+| loss_q2   | 1        |
+| loss_q3   | 1        |
+| mse       | 1        |
+| mse_q0    | 0.996    |
+| mse_q1    | 0.998    |
+| mse_q2    | 1        |
+| mse_q3    | 1        |
+| samples   | 128      |
+| step      | 0        |
+------------------------
+saving model 0...
+Traceback (most recent call last):
+  File "/gpfs/home3/dmul/thesis/distill_diffusion/scripts/image_train.py", line 83, in <module>
+    main()
+  File "/gpfs/home3/dmul/thesis/distill_diffusion/scripts/image_train.py", line 57, in main
+    ).run_loop()
+  File "/gpfs/home3/dmul/thesis/distill_diffusion/improved_diffusion/train_util.py", line 173, in run_loop
+    self.save()
+  File "/gpfs/home3/dmul/thesis/distill_diffusion/improved_diffusion/train_util.py", line 285, in save
+    save_checkpoint(0, self.master_params)
+  File "/gpfs/home3/dmul/thesis/distill_diffusion/improved_diffusion/train_util.py", line 282, in save_checkpoint
+    with bf.BlobFile(bf.join(get_blob_logdir(self.name), filename), "wb") as f:
+AttributeError: 'TrainLoop' object has no attribute 'name'
+
+JOB STATISTICS
+==============
+Job ID: 5463666
+Cluster: snellius
+User/Group: dmul/dmul
+State: FAILED (exit code 1)
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:00:19
+CPU Efficiency: 4.22% of 00:07:30 core-walltime
+Job Wall-clock time: 00:00:25
+Memory Utilized: 1.12 MB
+Memory Efficiency: 0.01% of 16.00 GB
