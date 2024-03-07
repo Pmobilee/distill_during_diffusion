@@ -94,7 +94,9 @@ class ImageDataset(Dataset):
             tuple(round(x * scale) for x in pil_image.size), resample=Image.BICUBIC
         )
 
-        arr = np.array(pil_image.convert("RGB"))
+        # arr = np.array(pil_image.convert("RGB")) # commenting this line
+        arr = np.array(pil_image) # add this line
+        arr = arr.reshape((arr.shape[0], arr.shape[1], 1)) # add this line
         crop_y = (arr.shape[0] - self.resolution) // 2
         crop_x = (arr.shape[1] - self.resolution) // 2
         arr = arr[crop_y : crop_y + self.resolution, crop_x : crop_x + self.resolution]
