@@ -13,17 +13,17 @@ def model_and_diffusion_defaults():
     Defaults for image training.
     """
     return dict(
-        image_size=64,
+        image_size=32,
         num_channels=128,
-        num_res_blocks=2,
+        num_res_blocks=3,
         num_heads=4,
         num_heads_upsample=-1,
         attention_resolutions="16,8",
-        dropout=0.0,
-        learn_sigma=False,
+        dropout=0.3,
+        learn_sigma=True,
         sigma_small=False,
         class_cond=False,
-        diffusion_steps=1000,
+        diffusion_steps=4000,
         noise_schedule="linear",
         timestep_respacing="",
         use_kl=False,
